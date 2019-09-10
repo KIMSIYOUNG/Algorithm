@@ -1,4 +1,4 @@
-package backjoon;
+package baekjoon;
 
 
 //문제

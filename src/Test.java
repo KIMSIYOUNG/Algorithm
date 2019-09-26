@@ -8,12 +8,6 @@ import java.util.Stack;
 public class Test {
 
     public static void main(String[] args) {
-
-        int a= 0;
-        while(true){
-            a++;
-            System.out.println(a);
-
-        }
+        System.out.println(6/4);
     }
 }

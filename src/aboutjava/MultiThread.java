@@ -30,6 +30,7 @@ public class MultiThread {
 
                 try{
                     Thread.sleep(500);
+                    System.out.println("hello world");
                 }catch (InterruptedException ie){
                     ie.printStackTrace();
                 }

@@ -1,23 +1,29 @@
 package programmers.level1;
 
 
-import java.util.Arrays;
-
 class Solution {
-
-    public String solution(String[] participant, String[] completion) {
-        Arrays.sort(participant);
-        Arrays.sort(completion);
-        int i;
-
-        for (i = 0; i < completion.length; i++) {
-
-            if (!(participant[i].equals(completion[i]))) {
-                return participant[i];
-
+    public boolean solution(String s) {
+        //TODO case 1)
+//        int length = s.length();
+//
+//        if(length !=4 && length !=6)
+//            return false;
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            if ('0' > s.charAt(i) || s.charAt(i) > '9')
+//                return false;
+//            }
+//        return true;
+        //TODO case 2)
+        int length = s.length();
+        if(length==4 || length==6){
+            try{
+                int a = Integer.parseInt(s);
+                return true;
+            }catch (NumberFormatException e){
+                return false;
             }
-        }
-        return participant[i];
+        }else
+            return false;
     }
 }
-

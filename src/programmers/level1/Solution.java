@@ -1,20 +1,29 @@
 package programmers.level1;
 
-class Solution {
-    public static String solution(String s) {
+import java.util.*;
 
-        String answer = "";
-        if(s.length()%2!=0){
-            answer = String.valueOf(s.charAt(s.length()/2));
-        }else{
-            answer =String.valueOf(s.charAt(s.length()/2-1))
-                    +String.valueOf((s.charAt(s.length()/2)));
+public class Solution {
+    public static int[] solution(int[] arr, int divisor) {
+        //TODO 리스트에 값을 담고
+        List<Integer> answer = new ArrayList<>();
+        for(int i=0; i<arr.length; i++){
+            if(arr[i]%divisor==0)
+                answer.add(arr[i]);
         }
-
-        return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Solution.solution("qwera"));
+        //TODO 배열에 다시 담음
+        int[] result = new int[answer.size()];
+        for(int i=0; i<result.length; i++){
+            result[i]=answer.get(i);
+        }
+        //TODO 출력
+        if(result.length==0){
+            result = new int[1];
+            result[0]=-1;
+            return result;
+        }
+        else{
+            Arrays.sort(result);
+            return result;
+        }
     }
 }

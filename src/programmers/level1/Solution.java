@@ -1,40 +1,38 @@
 package programmers.level1;
 
-
-import javax.print.event.PrintEvent;
-
 class Solution {
-    public int solution(int n, int[] lost, int[] reserve) {
-        int answer = 0 ;
-        int lostSelf = 0;
-        int count =0;
+    public static String solution(int a, int b) {
+        String answer = "";
 
-        //TODO 잃어버렸는데 자기꺼는 있는 학생
-        for(int i=0; i<lost.length; i++){
-            for(int j=0; j<reserve.length; j++){
-                if(lost[i]==reserve[j]){
-                    lostSelf++;
-                    lost[i]=-1;
-                    reserve[j]=-1;
-                    break;
-                }
-            }
+        //TODO 입력된 달을 받아 일로 변환한다.
+        int[] day_of_month = {31,29,31,30,31,30,31,31,30,31,30,31};
+        int days = 0;
+        for(int i=1; i<a; i++){
+            days += day_of_month[i-1];
         }
-        //TODO 잃어버린 애들한테 빌려주기
-        for(int i=0; i<lost.length; i++){
-            for(int j=0; j<reserve.length; j++){
-                if(Math.abs(lost[i]-reserve[j])==1){
-                    count++;
-                    reserve[j]=-1;
-                    break;
-                }
-            }
-        }
-        //TODO 전체 합산하기.
-        answer = n -lost.length +lostSelf + count;
+        //TODO 일로 변환된 값에 현재 일을 더해준다. 현재의 지나온 요일수.
+        days += b;
+
+        //TODO 1월1일은 1이니까, 7로 나누었을 때 1을 금요일을 기준으로 나누어준다.
+        if(days%7==1)
+            answer = "FRI";
+        else if(days%7==2)
+            answer = "SAT";
+        else if(days%7==3)
+            answer = "SUN";
+        else if(days%7==4)
+            answer = "MON";
+        else if(days%7==5)
+            answer = "TUE";
+        else if(days%7==6)
+            answer = "WED";
+        else if(days%7==0)
+            answer = "THU";
+
         return answer;
+    }
 
-
+    public static void main(String[] args) {
+        System.out.println(Solution.solution(1,1));
     }
 }
-

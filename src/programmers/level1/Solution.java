@@ -1,14 +1,26 @@
 package programmers.level1;
 
-import java.util.*;
+class Solution {
+    static boolean solution(String s) {
 
-public class Solution {
-    public static int[] solution(int[] arr, int divisor) {
-        return Arrays.stream(arr).filter(factor -> factor % divisor == 0).toArray();
+        String input = s.toUpperCase();
+        String[] split = input.split("");
+        int countP =0;
+        int countY =0;
+        for(int i=0; i<split.length; i++){
+            if(split[i].equals("P"))
+                countP++;
+            else if(split[i].equals("Y"))
+                countY++;
+        }
+        return countP == countY;
+
+        //return s.char().filter(e -> 'P'==e).count() == s.char().filter(e-> 'Y'==e).count();
+
     }
 
+
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2,5,5,5};
-        System.out.println(Arrays.toString(Solution.solution(arr, 5)));
+        System.out.println(Solution.solution("Pyy"));
     }
 }

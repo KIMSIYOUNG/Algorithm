@@ -1,29 +1,21 @@
 package programmers.level1;
 
-import java.util.*;
 
-public class Solution {
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Solution {
     public static void main(String[] args) {
-        int input = 127;
-        System.out.println(Solution.solution(input));
+        System.out.println(Arrays.toString(Solution.solution(12379)));
     }
-    //TODO 1번 방법 : 형변환 이후 다시 형변환
-    public static int solution(Integer n) {
-        String s = n.toString();
-        String[] split = s.split("");
-        int answer = 0;
+    public static int[] solution(long n) {
+        String input = String.valueOf(n);
+        String[] split = input.split("");
 
-        for(int i=0; i<split.length; i++) {
-            answer += Integer.parseInt(split[i]);
+        int[] answer = new int[split.length];
+        for(int i=0; i<split.length; i++){
+            answer[i]= Integer.parseInt(split[split.length-i-1]);
         }
         return answer;
-        //TODO 2번 방법
-//        while(true){
-//            answer+=n%10;
-//            if(n<10)
-//                break;
-//            n+=n/10;
-//
-//        }
     }
 }

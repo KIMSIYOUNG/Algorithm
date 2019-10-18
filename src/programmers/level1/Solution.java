@@ -1,23 +1,13 @@
 package programmers.level1;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 class Solution {
     public static void main(String[] args) {
-        System.out.println(Solution.solution(4953123123450123l));
+        System.out.println(Solution.solution(25));
     }
     public static long solution(long n) {
-        //TODO 입력값을 스트링으로 변환하여 배열을 만든다.
-        String input = String.valueOf(n);
-        String[] split = input.split("");
-        //TODO 배열을 내림차순으로 정렬한 후
-        Arrays.sort(split, Comparator.reverseOrder());
-        //TODO 각 값을 더해 인트로 변환한다.
-        String result ="";
-        for(String a:split)
-           result += a;
-
-        return Long.parseLong(result);
+        double sqrt = 0;
+        sqrt = Math.sqrt(n);
+        //TODO 소수점이 존재한다는 것은 int형으로 타입변환한 값으로 나눴을 때 0이상이라는 의미 == 정수 제곱근이 존재하지 않는다.
+        return (sqrt%(int)sqrt==0)?(long) Math.pow(sqrt+1,2):-1;
     }
 }

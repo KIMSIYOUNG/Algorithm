@@ -1,13 +1,26 @@
 package programmers.level1;
 
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 class Solution {
-    public static void main(String[] args) {
-        System.out.println(Solution.solution(25));
-    }
-    public static long solution(long n) {
-        double sqrt = 0;
-        sqrt = Math.sqrt(n);
-        //TODO 소수점이 존재한다는 것은 int형으로 타입변환한 값으로 나눴을 때 0이상이라는 의미 == 정수 제곱근이 존재하지 않는다.
-        return (sqrt%(int)sqrt==0)?(long) Math.pow(sqrt+1,2):-1;
+    public int[] solution(int[] arr) {
+        List<Integer> test = new ArrayList<>();
+        if(arr.length==1)
+            return new int[]{-1};
+        //TODO 선언한 리스트에 담기(기능 이용하려고)
+        for(int i=0; i<arr.length; i++)
+            test.add(arr[i]);
+        //TODO 최소값 구하고 리스트에서 제거
+        Integer min = Collections.min(test);
+        test.remove(min);
+        //TODO 다시 인트형 배열에 담아서 리턴
+        int answer[] = new int[test.size()];
+        for(int i=0; i<test.size(); i++)
+            answer[i] = test.get(i);
+
+        return answer;
     }
 }

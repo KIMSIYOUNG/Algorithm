@@ -1,12 +1,17 @@
 package programmers.level1;
 
+import java.util.Scanner;
 
-import java.util.Arrays;
-
-class Solution {
-    public int[] solution(int[] arr) {
-        if(arr.length==1) return new int[]{-1};
-        int min = Arrays.stream(arr).min().getAsInt();
-        return Arrays.stream(arr).filter(i->i!=min).toArray();
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        for(int i=0; i<b; i++){
+            for(int k=0; k<a; k++){
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
     }
 }

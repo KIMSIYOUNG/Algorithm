@@ -4,9 +4,12 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) {
-        int[][] arr = new int[][]{{1, 2, 3}, {4, 5, 6}};
-        System.out.println(arr[0][0]);
-        int[][] ints = Arrays.copyOfRange(arr, arr[0][0], arr[0][1]);
+        long a = 92233720368547757l;
+        int b = 1000;
+
+        System.out.println(a);
+        System.out.println(a*b);
+        System.out.println(a+b);
 
     }
 

@@ -1,18 +1,23 @@
 package programmers.level1;
 
-import java.util.Scanner;
-
-public class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int width = sc.nextInt();
-        int height = sc.nextInt();
-
-        //TODO 행과 열에 맞게 직사각형 출력
-        for(int i=0; i<height; i++){
-            for(int k=0; k<width; k++)
-                System.out.print("*");
-            System.out.println("");
+class Solution {
+    public static int solution(int n) {
+        int answer = 0;
+        for(int i=2; i<=n; i++) {
+            boolean flag = true;
+            for(int j=2; j<=Math.sqrt(i); j++) {
+                if(i%j==0) {
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag==true) answer++;
         }
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        int solution = Solution.solution(5);
+        System.out.println(solution);
     }
 }

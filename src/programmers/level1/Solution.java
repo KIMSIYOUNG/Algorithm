@@ -1,23 +1,24 @@
 package programmers.level1;
 
 class Solution {
-    public static int solution(int n) {
-        int answer = 0;
-        for(int i=2; i<=n; i++) {
-            boolean flag = true;
-            for(int j=2; j<=Math.sqrt(i); j++) {
-                if(i%j==0) {
-                    flag = false;
-                    break;
-                }
+    public static String solution(int n) {
+        String subak = "수박";
+        String baksu = "박수";
+        String answer ="";
+        if(n%2==0){
+            for(int i=0; i<n/2; i++){
+                answer += subak;
             }
-            if(flag==true) answer++;
+        }else{
+            answer ="수";
+            for(int i=0; i<n/2; i++)
+                answer += baksu;
         }
         return answer;
     }
 
     public static void main(String[] args) {
-        int solution = Solution.solution(5);
+        String solution = Solution.solution(7);
         System.out.println(solution);
     }
 }

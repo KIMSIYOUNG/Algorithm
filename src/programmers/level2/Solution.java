@@ -1,44 +1,54 @@
 package programmers.level2;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class Solution {
-    public static int[] solution(int[] progresses, int[] speeds) {
-        Queue<Integer> q = new ConcurrentLinkedQueue<Integer>();
+    public static int solution(int bridge_length, int weight, int[] truck_weights) {
+        int answer = 0;
+        int sum = 0;
+        int i = 0;
+        Queue<Integer> q = new LinkedList<Integer>();
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        int[] car_d = new int[truck_weights.length];
 
-        //TODO 걸리는 시간을 큐에 담는다.
-        for (int i = 0; i < progresses.length; i++) {
-            q.add((100 - progresses[i]) % speeds[i] == 0 ? (100 - progresses[i]) / speeds[i]
-                    : (100 - progresses[i]) / speeds[i] + 1);
-        }
-        System.out.println(q.toString());
-        //TODO 시간을 비교해 리스트에 담는다.
-        List<Integer> result = new ArrayList<Integer>();
-        int standard = q.poll();
-        int cnt = 1;
-        while (!q.isEmpty()) {
-            int num = q.poll();
-            if (standard >= num) {
-                cnt++;
-            } else {
-                result.add(cnt);
-                cnt = 1;
-                standard = num;
+        while(true) {
+            answer++;
+            //while문이므로 i를 직접 설정해서 새로운 트럭이 다리를 지나가면 증가시켜준다.
+            if(i<truck_weights.length && sum + truck_weights[i] <= weight) {
+                q.add(truck_weights[i]);
+                sum += truck_weights[i];
+                i++;
             }
+            // -1은 다리를 이미 건넜다는 표시이다.
+            for(int j=0; j<i; j++) {
+                if(car_d[j] != -1) {
+                    car_d[j]++;
+                }
+            }
+            //시간이 길이와 같으면 나오면서 전체 무게를 빼주고 시간 배열을 -1로 바꿔준다.
+            for(int j=0; j<i; j++) {
+                if(car_d[j] == bridge_length) {
+                    int complete = q.poll();
+                    arr.add(complete);
+                    sum -= complete;
+                    car_d[j] = -1;
+                }
+            }
+            //마지막에는 시간 추가가 안되므로 나오면서 answer++을 해준다.
+            if(arr.size() == truck_weights.length) {
+                answer++;
+                break;
+            }
+
         }
-        result.add(cnt);
-        //TODO 리스트를 다시, 배열에 담아 리턴한다
-        int[] answer = new int[result.size()];
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = result.get(i);
-        }
+
         return answer;
     }
 
     public static void main(String[] args) {
-        int[] solution = Solution.solution(new int[]{93, 20, 45, 70}, new int[]{1, 30, 5, 3});
-        System.out.println(Arrays.toString(solution));
+        int solution = Solution.solution(2, 10, new int[]{7, 4, 5, 6});
+        System.out.println(solution);
     }
-
 }

@@ -1,6 +1,5 @@
 package programmers.level1;
 
-import java.util.Arrays;
 import java.util.Stack;
 
 public class techcourse7 {

@@ -1,32 +1,24 @@
 package programmers.level1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 class Solution {
-    public static String solution(String s) {
-        //TODO 1) 띄어쓰기 단위로 쪼개서 배열에 담는다.
-        String[] s1 = s.trim().split(" ");
-        //TODO 2) 배열 인덱스 하나씩 Char 의 형태로 쪼개 대소문자를 구분한다.
-        List<Character> arr = new ArrayList<>();
-        for(int i=0; i<s1.length; i++){
-            for(int j=0; j<s1[i].length(); j++){
-                if ((j % 2 == 0)) {
-                    arr.add(Character.toUpperCase(s1[i].charAt(j)));
-                } else {
-                    arr.add(Character.toLowerCase(s1[i].charAt(j)));
-                }
-            }
-            arr.add(' ');
-        }
-        String answer = "";
-        for(int i =0; i<arr.size()-1; i++){
-            answer += arr.get(i);
+    public static int[] solution(int[] array, int[][] commands) {
+        int[] answer = new int[commands.length];
+        //TODO Array에서 commands를 참고해 값을 나눈다
+        for(int i=0; i<commands.length; i++){
+            int[] result = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
+            Arrays.sort(result);
+            answer[i]=result[commands[i][2]-1];
         }
         return answer;
     }
+
     public static void main(String[] args) {
-        String example = "he llo  world  i m siyoung";
-        System.out.println(Solution.solution(example));
+        int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+        int[] array = {1, 5, 2, 6, 3, 7, 4};
+        int[] solution = Solution.solution(array, commands);
+        System.out.println(Arrays.toString(solution));
     }
+
 }

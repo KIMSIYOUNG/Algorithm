@@ -1,23 +1,33 @@
 package programmers.level1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 
-class Solution {
-    public String[] solution(String[] strings, int n) {
-        List<String> list = new ArrayList<>();
+class Solution{
+    public static int[] solution(int money){
+        int[] result = new int[9];
+        result[0]=money/50000;
+        money %= 50000;
+        result[1]=money/10000;
+        money %= 10000;
+        result[2]=money/5000;
+        money %= 5000;
+        result[3]=money/1000;
+        money %= 1000;
+        result[4]=money/500;
+        money %= 500;
+        result[5]=money/100;
+        money %= 100;
+        result[6]=money/50;
+        money %= 50;
+        result[7]=money/10;
+        money %= 10;
+        result[8]=money/1;
+        money %= 1;
+        return result;
+    }
 
-        for(int i = 0; i<strings.length; i++){
-            list.add(strings[i].charAt(n)+strings[i]);
-        }
-        Collections.sort(list);
-
-        String[] answer = new String[list.size()];
-        for(int i=0; i<answer.length; i++){
-            answer[i] = list.get(i).substring(1,list.get(i).length());
-        }
-        return answer;
-
+    public static void main(String[] args) {
+        int[] solution = Solution.solution(1324);
+        System.out.println(Arrays.toString(solution));
     }
 }

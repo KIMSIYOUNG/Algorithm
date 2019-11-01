@@ -1,27 +1,38 @@
 package programmers.level2;
 
-class Solution {
-    public static int solution(String skill, String[] skill_trees) {
-        int answer = skill_trees.length;
-        int before = 0;
-        int current = 0;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
-        for (int i = 0; i<skill_trees.length; i++){
-            before = skill_trees[i].indexOf(skill.charAt(0));
-            for(int k=1; k<skill.length(); k++){
-                current = skill_trees[i].indexOf(skill.charAt(k));
-                if(before>current&&current!=-1 || before == -1 && current != -1){
-                    answer--;
-                    break;
+class Solution {
+    public static int solution(int[] priorities, int location) {
+        int answer = 1;
+
+        PriorityQueue priority = new PriorityQueue<>(Collections.reverseOrder());
+
+        for (int task : priorities) {
+            priority.add(task);
+        }
+        //{2,5,4,1,3};
+
+        while (!priority.isEmpty()) {
+            for (int i = 0; i < priorities.length; i++) {
+                if (priorities[i] == (int) priority.peek()) {
+                    if (i == location) {
+                        return answer;
+                    }
+                    priority.poll();
+                    answer++;
                 }
-                before = current;
             }
         }
+
         return answer;
     }
 
     public static void main(String[] args) {
-        int cbd = Solution.solution("CBD", new String[]{"BACDF", "CBADF", "AECB", "BDA"});
-        System.out.println(cbd);
+        int solution = Solution.solution(new int[]{2, 1, 3, 2, 3, 4}, 4);
+        System.out.println(solution);
     }
 }

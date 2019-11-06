@@ -1,24 +1,34 @@
 package programmers.level2;
 
-import java.util.Arrays;
-import java.util.Collections;
-
 class Solution {
-    public static int solution(int []A, int []B) {
-        int answer = 0;
-        Integer[] arr = new Integer[B.length];
-        for(int i=0; i<arr.length; i++)
-            arr[i] = B[i];
-        Arrays.sort(A);
-        Arrays.sort(arr, Collections.reverseOrder());
-        for(int i=0; i<A.length; i++){
-            answer += A[i] * arr[i];
+    public static int solution(int n) {
+        int count = 0;
+        int i=1;
+        int answer = i;
+        int k=i+1;
+
+        while(true){
+            if(i==n){
+                count++;
+                break;
+            }
+            answer += k;
+            if(answer==n){
+                count++; i++;
+                k = i+1; answer = i;
+            }
+            else{
+                k++;
+                if(answer>n){
+                    i++; k = i+1;
+                    answer = i;
+                }
+            }
         }
-        return answer;
+        return count;
     }
 
     public static void main(String[] args) {
-        System.out.println(solution(new int[]{1,4,2},new int[]{5,4,4}));
-        System.out.println(solution(new int[]{1,2,},new int[]{3,4}));
+        System.out.println(solution(15));
     }
 }

@@ -7,19 +7,23 @@ import java.util.Scanner;
 public class Test {
 
     public static void main(String[] args) throws ParseException {
-        String start = "10:59:10";
-        String end = "10:59:20";
-        SimpleDateFormat s = new SimpleDateFormat("YY:mm:ss");
-        Date d = new Date();
-        Date start2 = s.parse(start);
-        Date end2 = s.parse(end);
-        System.out.println(start2.getTime());
-        System.out.println(end2.getTime());
-        System.out.println(start2.getTime()-end2.getTime());
-        System.out.println(end2.getTime()-start2.getTime());
-
-
+        int[][] arr_double_3 = new int[3][];
+        for (int i = 0; i < arr_double_3.length; i++) {
+            int rand = (int) (Math.random() * 10 + 1);
+            //random함수입니다.0.0부터 0.9까지 난수를 생성합니다.
+             arr_double_3[i]= new int[rand];//double_3[i]를 double[rand]만큼 크기를 주겠다.라는의미입니다.
+             for (int j = 0; j < arr_double_3[i].length; j++) {
+                 arr_double_3[i][j] = j; System.out.print(arr_double_3[i][j] + " ");
+             }
+             System.out.println();
+        }
+        //결과 화면
+        //0 1 2
+        //0 1 2 3
+        //0 1 2 3 4 5 6 7
     }
 
-
 }
+
+
+

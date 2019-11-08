@@ -14,7 +14,7 @@ public class techcourse5 {
     }
 
     public static void main(String[] args) {
-        int solution = techcourse5.solution(33);
+        int solution = techcourse5.solution(400);
         System.out.println(solution);
     }
 }

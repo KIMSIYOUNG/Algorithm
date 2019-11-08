@@ -20,10 +20,7 @@ public class techcourse7 {
         return answer;
     }
     public static void main(String[] args) {
-        String browoanoommnaon = techcourse7.solution("zyelleyz");
+        String browoanoommnaon = techcourse7.solution("browoanoommnaon");
         System.out.println(browoanoommnaon);
-
-
     }
-
 }

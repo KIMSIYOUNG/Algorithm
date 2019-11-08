@@ -14,7 +14,7 @@ class techcourse1{
     }
 
     public static void main(String[] args) {
-        int[] solution = techcourse1.solution(1624);
+        int[] solution = techcourse1.solution(535583);
         System.out.println(Arrays.toString(solution));
     }
 }

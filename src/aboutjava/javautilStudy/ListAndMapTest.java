@@ -20,7 +20,12 @@ public class ListAndMapTest {
         Collections.sort(list);
         for(String s : list)
             System.out.println(s);
+
         //Map
+        Map<String, Integer> products = new HashMap<>();
+        //상품의 이름과 값을 products에 추가해 보세요.
+        products.put("가위",2500);
+        products.put("크레파스",5000);
         Map<Integer, String> map = new HashMap<>();
         map.put(1,"kim");
         map.put(2,"yeon");
